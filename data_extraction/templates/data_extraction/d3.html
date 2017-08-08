@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../static/data_extraction/multiline.css">
+    <script src="http://d3js.org/d3.v3.js" charset="utf-8"></script>
+    <script src="../../static/data_extraction/main.js"></script>
+
+    <!--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
+</head>
+<body>
+<div class="chart-wrapper" id="chart-line1"></div>
+
+<script type="text/javascript">
+
+    d3.csv('../../static/data_extraction/climate.csv', function(error, data) {
+         if (error && error.target.status === 404) {
+      console.log("File not found")    }
+  if(data.length === 0){
+  console.log("File empty")
+  }
+
+    data.forEach(function (d) {
+        d.Year = +d.Year;
+        d.JAN = +d.JAN;
+        d.FEB = +d.FEB;
+        d.MAR = +d.MAR;
+        d.APR = +d.APR;
+        d.MAY = +d.MAY;
+        d.JUN = +d.JUN;
+        d.JUL = +d.JUL;
+        d.AUG = +d.AUG;
+        d.SEP = +d.SEP;
+        d.OCT = +d.OCT;
+        d.NOV = +d.NOV;
+        d.DEC = +d.DEC;
+        d.WIN = +d.WIN;
+        d.SPR = +d.SPR;
+        d.SUM = +d.SUM;
+        d.AUT = +d.AUT;
+        d.ANN = +d.ANN;
+    });
+
+
+    var chart = makeLineChart(data, 'Year', {
+        'JAN': {column: 'JAN'},
+        'FEB': {column: 'FEB'},
+        'MAR': {column: 'MAR'},
+        'APR': {column: 'APR'},
+        'MAY': {column: 'MAY'},
+        'JUN': {column: 'JUN'},
+        'JUL': {column: 'JUL'},
+        'AUG': {column: 'AUG'},
+        'SEP': {column: 'SEP'},
+        'OCT': {column: 'OCT'},
+        'NOV': {column: 'NOV'},
+        'DEC': {column: 'DEC'},
+        'WIN': {column: 'WIN'},
+        'SPR': {column: 'SPR'},
+        'SUM': {column: 'SUM'},
+        'AUT': {column: 'AUT'},
+        'ANN': {column: 'ANN'}
+    }, {xAxis: 'Years', yAxis: 'Amount'});
+    chart.bind("#chart-line1");
+    chart.render();
+
+});
+</script>
+</body>
+</html>
