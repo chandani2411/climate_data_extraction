@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 
-    d3.csv('../../static/data_extraction/climate.csv', function(error, data) {
+    d3.csv('../../static/data_extraction/climate_data.csv', function(error, data) {
          if (error && error.target.status === 404) {
       console.log("File not found")    }
   if(data.length === 0){
